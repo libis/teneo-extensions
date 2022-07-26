@@ -16,11 +16,26 @@ end
 
 require_relative "lib/teneo/extensions/version"
 
-desc "Bump minor version"
-task :bump_minor do
-  `gem bump minor`
+desc "publish patch version"
+task :publish do
+  `gem bump patch --push --release`
+  `rake changelog`
+  `git commit -am 'Changelog update'`
+  `git push`
 end
 
+desc "publish minor version"
+task :publish_minor do
+  `gem bump minor --push --release`
+  `rake changelog`
+  `git commit -am 'Changelog update'`
+  `git push`
+end
 
-desc "publish new minor version of the gem"
-task publish: [:bump_minor, :changelog, :build, :release]
+desc "publish minor version"
+task :publish_major do
+  `gem bump major --push --release`
+  `rake changelog`
+  `git commit -am 'Changelog update'`
+  `git push`
+end
