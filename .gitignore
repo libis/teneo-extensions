@@ -11,3 +11,6 @@
 .rspec_status
 
 /.vscode/
+/.idea/
+
+Gemfile.lock
