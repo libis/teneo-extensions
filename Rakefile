@@ -11,7 +11,6 @@ task default: :spec
 GitHubChangelogGenerator::RakeTask.new :changelog do |config|
   config.user = 'libis'
   config.project = 'teneo-extensions'
-  config.since_tag = '0.0.2'
   config.unreleased = false
 end
 
