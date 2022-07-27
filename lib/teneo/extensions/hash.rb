@@ -38,13 +38,13 @@ class Hash
   end unless method_defined? :reverse_merge!
 
   # Apply other hash values if current value is blanco
-  def apply_defaults(other_hash)
-    self.merge(other_hash) { |_, v, w| v.blanco? ? w : v }
+  def apply_defaults(other_hash, &block)
+    self.merge(other_hash) { |_, v, w| (block_given? ? yield(v) : v.blanco?) ? w : v }
   end unless method_defined? :apply_defaults
 
   # Apply in-place other hash values if current value is blanco
-  def apply_defaults!(other_hash)
-    self.merge!(other_hash) { |_, v, w| v.blanco? ? w : v }
+  def apply_defaults!(other_hash, &block)
+    self.merge!(other_hash) { |_, v, w| (block_given? ? yield(v) : v.blanco?) ? w : v }
   end unless method_defined? :apply_defaults!
 
   def symbolize_keys

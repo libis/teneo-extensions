@@ -67,8 +67,8 @@ Add the following methods to the Hash class:
 - `recursive_merge!(other_hash)`: in-place version of above
 - `reverse_merge(other_hash)`: merge current hash into the `other_hash`
 - `reverse_merge!(other_hash)`: in-place version of above
-- `apply_defaults(other_hash)`: merge `other_hash` values into current hash, but only if the current value is `blanco?`
-- `apply_defaults!(other_hash)`: in-place version of above
+- `apply_defaults(other_hash, &block)`: merge `other_hash` values into current hash, but only if the current value is `blanco?` or `block` returns true
+- `apply_defaults!(other_hash, &block)`: in-place version of above
 - `symbolize_keys`, `stringify_keys`, `deep_symbolize_keys`, `deep_stringify_keys`, `transform_keys`, `transform_values`, `deep_transform_keys`, `deep_transform_values` and their in-place versions: as implemented by ActiveSupport
 
 ### Debugging aids
