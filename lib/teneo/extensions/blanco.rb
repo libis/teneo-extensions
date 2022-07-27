@@ -35,6 +35,7 @@ class Hash
   def blanco?
     empty? || !any? {|_,v| !v.blanco?}
   end
+end
 
 class Object
   def blanco?
