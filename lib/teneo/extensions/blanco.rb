@@ -19,13 +19,13 @@ class FalseClass
 end
 
 class String
-  BLANK_REGEX = /\A[[:space:]]^\z/.freeze
+  BLANK_REGEX = /\A[[:space:]]*\z/.freeze
   def blanco?
-    empty? || BLANK_REGEX.match?(self)
+    BLANK_REGEX.match?(self)
   end
 end
 
-class Enumerable
+class Array
   def blanco?
     (respond_to?(:empty?) ? !!empty? : false) || all? {|x| x.blanco?}
   end
